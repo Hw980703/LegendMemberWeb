@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+ul{
+list-style : none;
+
+}
+
+ul label {
+	margin-right : 20px;
+	text-align : left;
+	float:left;
+
+}
+li{
+	line-height : 30px
+}
