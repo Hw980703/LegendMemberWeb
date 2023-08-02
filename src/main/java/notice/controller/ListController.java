@@ -1,6 +1,7 @@
-package member.controller;
+package notice.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,20 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import member.model.service.MemberService;
-import member.model.vo.Member;
+import notice.model.service.NoticeService;
+import notice.model.vo.Notice;
 
 /**
- * Servlet implementation class MyInfoController
+ * Servlet implementation class ListController
  */
-@WebServlet("/member/myInfo.do")
-public class MyInfoController extends HttpServlet {
+@WebServlet("/notice/list.do")
+public class ListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyInfoController() {
+    public ListController() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,18 +34,13 @@ public class MyInfoController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		// 1. with Data <- DataBase에서 가져옴
-		// 쿼리문 : SELECT * FROM MEMBER_TBL WHERE MEMBER_ID = ?
-
+		// SELECT * FROM NOTICE_TBL;
 		
-		MemberService service = new MemberService();
-		String memberId = request.getParameter("member-id");
-		Member member = service.selectOneById(memberId);
-		request.setAttribute("member", member);
-		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/user/Info.jsp");
+		NoticeService service = new NoticeService();
+		List<Notice> nList = service.selectNoticeList();
+		request.setAttribute("nList", nList);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/notice/list.jsp");
 		view.forward(request, response);
-		
-//		response.sendRedirect("");
 	}
 
 	/**

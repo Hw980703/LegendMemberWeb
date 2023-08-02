@@ -1,0 +1,34 @@
+코딩노트
+공지 게시판 만들기
+1. SQLDeveloper로 DB에 접속해서 NOTICE_TBL 생성, NOTICE_NO 에 대한 SEQUENCE 생성했음..
+2 Controller, Service , DAO 패키지 생성 후 각각의 클래스 생성
+ - NoticeController, NoticeService, NoticeDAO, Notice
+3.Notice VO 클래스를 생성
+  -필드생성 -> NOTICE_TBL 의 컬럼명을 참고함, 컬럼명과 동일하게 타입과 이름을 만듬(낙타표기법)
+  -생성자 생성
+  -getter/setter , toString ......
+4. 내가 만들 기능의 쿼리문 생각해보기
+  	- INSERT 쿼리문 생각해봄 -> 매개변수,리턴타입은 int
+5.쿼리문을 생각해보니 입력을 받아야 하는데 그러려면 VIEW 가 필요함
+  - insert.jsp 를 만들어야겠네??
+  - insert.jsp 에는 Form 태그, (Action, method), Action은 컨트롤러와 관련이 있음(.do 파일 서블릿)
+  - action 은 url 설계 하는거임, 그 방법은 주제/기능명 ex) notice/register.do ㅋㅋ
+  - method는 get,post 인데 get방식은 쿼리스트링이 url 보이고 post는 안보임의 차이
+  - 쿼리스트링은 form > input[name=]으로 만들어짐
+6. 설계한 url 을 바탕으로 컨트롤러 (Servlet) 생성
+ - Servlet 이름 작성 및 url mapping 작성(form태그의 action값과 일치)
+7. 생각했던 쿼리문에 따라 NoticeService에서 호출할 메소드를 만들고(NoticeService 객체는 만든 후)
+-매개변수가 있으면 쿼리스트링을 처리하여 객체화 해줌 (notice 또는 변수에 담기)
+-리턴값을 통해서 성공여부에 따라 페이지 이동 또는 성공/실패 오류페이지 출력
+8.NoticeService 에서 메소드를 만들어줌. DB 연결 생성, DAO호출(연결도 넘겨줌), COMMIT/ROLLBACK(트랜잭션 처리에 필요함)
+9.NoticeDAO에 메소드를 만들어줌, 넘겨받은 연결을 통해서 쿼리문 실행준비, 쿼리문 실행 및 결과 받기, 자원해제
+결과 후처리 후 결과값 리턴(DML - int, SELECT - LIST,VO,int)
+
+
+
+
+
+
+다른 주제(IT 등) 상위 블로그 보고 참고해서 작성(아이패드 등)
+p2p 카페에 최신가전 올리기 (아직 검색글이 쌓이지 않은것들) 먹어두면서 지수 쌓기
+---쿠팡 최신날짜/로켓배송/가격설정 하면 최신제품 나오고 리뷰수가 몇개 있으면 조회수 검색 후 발행하기

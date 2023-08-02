@@ -1,4 +1,4 @@
-package member.controller;
+package student.controlelr;
 
 import java.io.IOException;
 
@@ -14,7 +14,7 @@ import member.model.vo.Member;
 /**
  * Servlet implementation class EnrollController
  */
-@WebServlet("/member/register.do")
+@WebServlet("/student/register.do")
 public class EnrollController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -32,8 +32,6 @@ public class EnrollController extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
-		request.getRequestDispatcher("/WEB-INF/member/enroll.jsp").forward(request, response);
 	}
 
 	/**
